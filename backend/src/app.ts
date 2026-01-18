@@ -1,5 +1,6 @@
 import express, { type Request, type Response } from "express";
 import { clerkMiddleware } from "@clerk/express";
+import path from "path";
 
 const app = express();
 
@@ -27,5 +28,14 @@ app.use("/api/users", userRoutes);
 // error handlers must come after all the routes and other middlewares so they can catch errors passed with next(err) or thrown inside async handlers.
 
 app.use(errorHandler);
+
+// serve frontend in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../../web/dist")));
+
+  app.use("/{*any}", (_, res) => {
+    res.sendFile(path.join(__dirname, "../../web/dist/index.html"));
+  });
+}
 
 export default app;
