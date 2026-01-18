@@ -10,7 +10,10 @@ export const protectRoute = [
   requireAuth(),
   async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
-      const { userId: clerkId } = getAuth(req);
+      const { userId: clerkId, getToken } = getAuth(req);
+      // const token = await getToken()
+      // console.log(token);
+      
       // if (!clerkId)
       //   return res
       //     .status(401)
