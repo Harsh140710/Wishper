@@ -9,7 +9,7 @@ app.use(express.json()); // parses incoming JSON request bodies and makes them a
 app.use(clerkMiddleware());
 
 // test route
-app.get("/health", (req, res) => {
+app.get("/", (_, res) => {
   res.json({ status: "OK", message: "server is running" });
 });
 
