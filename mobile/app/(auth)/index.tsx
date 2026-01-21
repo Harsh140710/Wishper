@@ -14,6 +14,7 @@ const { width, height } = Dimensions.get("window");
 
 const AuthScreen = () => {
   const { handleSocialAuth, loadingStrategy } = useAuthSocial();
+  const isLoading = loadingStrategy !== null;
 
   return (
     <View className="flex-1 bg-surface-dark">
@@ -48,7 +49,7 @@ const AuthScreen = () => {
           {/* HEADLINE */}
           <View className="mt-9 items-center">
             <Text className="text-4xl font-bold text-foreground text-center font-serif">
-              Connext & Chat
+              Connect & Chat
             </Text>
             <Text className="mt-2 text-3xl font-bold text-primary font-mono">
               Seamlessly
@@ -60,8 +61,10 @@ const AuthScreen = () => {
             {/* GOOGLE BUTTON */}
             <Pressable
               className="flex-1 flex-row items-center justify-center gap-2 bg-white/95 rounded-2xl active:scale-[0.97] py-4"
-              disabled={loadingStrategy === "oauth_google"}
-              onPress={() => handleSocialAuth("oauth_google")}
+              disabled={isLoading}
+              accessibilityRole="button"
+              accessibilityLabel="Continue With Google"
+              onPress={() => !isLoading && handleSocialAuth("oauth_google")}
             >
               {loadingStrategy === "oauth_google" ? (
                 <ActivityIndicator size="small" color="#1a1a1a" />
@@ -85,8 +88,10 @@ const AuthScreen = () => {
             {/* APPLE BUTTON */}
             <Pressable
               className="flex-1 flex-row items-center justify-center gap-2 bg-white/10 rounded-2xl active:scale-[0.97] py-4 border border-white/20"
-              disabled={loadingStrategy === "oauth_apple"}
-              onPress={() => handleSocialAuth("oauth_apple")}
+              disabled={isLoading}
+              accessibilityRole="button"
+              accessibilityLabel="Continue With Apple"
+              onPress={() => !isLoading && handleSocialAuth("oauth_apple")}
             >
               {loadingStrategy === "oauth_apple" ? (
                 <ActivityIndicator size="small" color="#FFFFFF" />
