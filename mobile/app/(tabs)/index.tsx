@@ -1,5 +1,6 @@
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Text } from 'react-native'
+import { Button, Text } from 'react-native'
+import * as Sentry from '@sentry/react-native';
 
 const ChatsTab = () => {
   return (

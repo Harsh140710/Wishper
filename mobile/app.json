@@ -17,7 +17,8 @@
         "foregroundImage": "./assets/images/logo.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.harsh1407.Whisper"
     },
     "web": {
       "output": "static",
@@ -35,6 +36,14 @@
           "dark": {
             "backgroundColor": "#000000"
           }
+        }
+      ],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "whisper-chat-app",
+          "organization": "college-df"
         }
       ]
     ],
