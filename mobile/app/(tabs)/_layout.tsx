@@ -28,6 +28,7 @@ const TabsLayout = () => {
         name="index"
         options={{
           title: "Chats",
+          headerShown: false,
           tabBarIcon: ({ color, focused, size }) => (
             <Ionicons
               name={focused ? "chatbubbles" : "chatbubbles-outline"}
@@ -41,6 +42,7 @@ const TabsLayout = () => {
         name="profile"
         options={{
           title: "Profile",
+          headerShown: false,
           tabBarIcon: ({ color, focused, size }) => (
             <Ionicons name={focused ? "person" : "person-outline"} size={size} color={color} />
           ),
